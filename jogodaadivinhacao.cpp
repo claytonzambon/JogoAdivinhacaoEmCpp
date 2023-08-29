@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -15,17 +17,22 @@ int main(){
 	cin >> dificuldade;
 	
 	int numero_de_tentativas;
-	if (dificuldade == 'F'){
-		numero_de_tentativas = 15;
-	}
-	else if (dificuldade == 'M'){
-		numero_de_tentativas = 10;
-	}
-	else {
-		numero_de_tentativas = 5;
+	switch(dificuldade){
+		case 'F':
+			numero_de_tentativas = 15;
+			break;
+		case 'M':
+			numero_de_tentativas = 10;
+			break;
+		case 'D':
+			numero_de_tentativas = 5;
+			break;
+		default:
+			cout << "Escolha uma opcao valida" << endl;
 	}
 	
-	const int NUMERO_SECRETO = 42;
+	srand(time(NULL));
+	const int NUMERO_SECRETO = rand() % 100;
 	
 	bool nao_acertou = true;
 	int tentativas = 0;
