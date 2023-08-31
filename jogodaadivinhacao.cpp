@@ -14,10 +14,14 @@ int main(){
 	cout << "Facil (F), Medio (M), Dificil (D) " << endl;
 	
 	char dificuldade;
-	cin >> dificuldade;
 	
 	int numero_de_tentativas;
-	switch(dificuldade){
+	
+	bool opcao_invalida;
+	do {
+		cin >> dificuldade;
+		bool opcao_invalida = false;
+		switch(dificuldade){
 		case 'F':
 			numero_de_tentativas = 15;
 			break;
@@ -28,8 +32,11 @@ int main(){
 			numero_de_tentativas = 5;
 			break;
 		default:
+			opcao_invalida = true;
 			cout << "Escolha uma opcao valida" << endl;
-	}
+		}
+	} while(opcao_invalida);
+	
 	
 	srand(time(NULL));
 	const int NUMERO_SECRETO = rand() % 100;
@@ -77,5 +84,5 @@ int main(){
 		cout << fixed;
 		cout << "Sua pontuacao foi de " << pontos << " pontos." << endl;
 	}
-	
+
 }
